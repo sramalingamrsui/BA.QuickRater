@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="false">
+  <class name="RSUI.BA.Rating.Data.Entities.Department, RSUI.BA.Rating.Data" table="Departments">
+    <id name="DeptNbr" column="DEPARTMENT_NUMBER" type="Int32" unsaved-value="0" >
+    </id>
+    <property name="DeptDesc" column= "DEPARTMENT_DESCRIPTION" type="string" length="60"/>
+    <property name="ProfitCenterKey" column= "ProfitCenterKey" type="Int32"/>
+
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="RSUIDataClasses">
+  <DataContextMoniker Name="/RSUIDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6347cdf0-87d8-4285-b0f0-4c1507771029" absoluteBounds="4.125, 1.75, 2, 3.1170068359374996">
+      <DataClassMoniker Name="/RSUIDataClassesDataContext/GLTerritory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ce3aca6-77d7-4854-8f59-7b5a0c4206b3" absoluteBounds="4.14, 2.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

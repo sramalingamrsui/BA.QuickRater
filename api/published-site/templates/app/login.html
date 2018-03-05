@@ -1,0 +1,28 @@
+﻿<div ng-controller="LoginController as login">
+    <h1>Please Login</h1>
+
+    <form class="form">
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <label for="login_userName">User Name:</label>
+            </div>
+            <div class="col-md-10">
+                <input id="login_userName" type="text" ng-model="login.userName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <label for="login_password">Password:</label>
+            </div>
+            <div class="col-md-10">
+                <input id="login_password" type="password" ng-model="login.password" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" ng-click="login.getToken()">Login</button>
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BAGLRatingDB" Class="RSUIDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SQL12devn01;Initial Catalog=BAGLRatingDB;User ID=sa" SettingsObjectName="RSUI.BA.Rating.Data.Properties.Settings" SettingsPropertyName="BAGLRatingDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.GLTerritory" Member="GLTerritories">
+    <Type Name="GLTerritory">
+      <Column Name="State" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PreDirection" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="StreetName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PostDirection" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="StreetType" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="LowAddressNumber" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="HighAddressNumber" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="OEBFlag" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CountyFIPS" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="GLTerritoryCode" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

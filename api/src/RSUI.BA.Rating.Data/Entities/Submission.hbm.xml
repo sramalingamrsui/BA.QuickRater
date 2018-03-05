@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="false">
+  <class name="RSUI.BA.Rating.Data.Entities.Submission, RSUI.BA.Rating.Data" table="Submission" >
+    <id name="SubRecNbr" column="SUB_RECORD_NUMBER" type="Int32" unsaved-value="-1" >
+      <generator class="native" />
+    </id>
+    
+    <property name="SubNbr" column="SUB_SUBMISSION_NUMBER" type="int" />
+    <property name="CurrentEffDate" column="SUB_CURRENT_EFFECTIVE_DATE" type="DateTime" />
+    <property name="CurrentExpDate" column="SUB_CURRENT_EXPIRATION_DATE" type="DateTime" />
+    <property name="InsuredName" column="SUB_INSURED_NAME" type="string" length="60"/>
+    <property name="InsuredCity" column="SUB_INSURED_CITY" type="string" length="60"/>
+    <property name="InsuredState" column="INSURED_STATE" type="string" length="60"/>
+   
+    <many-to-one name="PolicySymbol" class="RSUI.BA.Rating.Data.Entities.PolicySymbol,RSUI.BA.Rating.Data" not-null="true">
+      <column name="SUB_POLICY_SYMBOL" />
+    </many-to-one>
+    
+    <many-to-one name="InsuranceCompany" class="RSUI.BA.Rating.Data.Entities.InsuranceCompany,RSUI.BA.Rating.Data" not-null="true">
+      <column name="COMPANY_RECORD_NUMBER" />
+    </many-to-one>
+    <many-to-one name="Department" class="RSUI.BA.Rating.Data.Entities.Department,RSUI.BA.Rating.Data" not-null="true">
+      <column name="DEPARTMENT_NUMBER" />
+    </many-to-one>
+ 
+  </class>
+</hibernate-mapping>
