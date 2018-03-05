@@ -1,0 +1,68 @@
+<ion-header >
+    <ion-toolbar color="primary">
+      <ion-title >
+        <div style="float:left;margin-right:10px;height:40px"><img alt="logo" height="40" src="../../assets/imgs/rsui-logo.png" /></div>
+          <div style="padding-top:10px"><span style="font-weight: normal" >Quick Rater</span></div>
+          <div style="clear:both"></div>
+          </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+      <ion-list>
+            <ion-item>
+              <ion-label class="rsui-label" stacked>Class Code</ion-label>
+              <ion-input type="number" [value]="selectedClasscode" clearInput [formControl]="selectedClasscodeControl"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="rsui-label" stacked>Location</ion-label>
+                <ion-input type="text" [value]="selectedLocation" clearInput [formControl]="selectedLocationControl"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="rsui-label" stacked>Exposure</ion-label>
+                <ion-input type="number" [value]="exposure" clearInput [formControl]="exposureControl"></ion-input>
+            </ion-item>    
+          </ion-list>
+          <ion-grid *ngIf="rateInfo?.rates?.premisesUnmodifiedRate && rateInfo?.rates?.premisesUnmodifiedRate != 0.00">
+              <ion-row>
+                <ion-col class="rsui-col">Premises Premium:</ion-col>
+                <ion-col class="rsui-col rsui-data-col">${{premisesPremium }}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="rsui-col">Base Rate:</ion-col>
+                <ion-col class="rsui-col rsui-data-col">{{rateInfo?.rates?.premisesUnmodifiedRate}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="rsui-col">Inc Limits Factor:</ion-col>
+                <ion-col class="rsui-col rsui-data-col">{{rateInfo?.rates?.premisesIncreasedLimitsFactor}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="rsui-col">Final Rate:</ion-col>
+                <ion-col class="rsui-col rsui-data-col">{{rateInfo?.rates?.premisesRate}}</ion-col>
+              </ion-row>
+          </ion-grid>
+          <ion-grid *ngIf="rateInfo?.rates?.productsUnmodifiedRate && rateInfo?.rates?.productsUnmodifiedRate != 0.00">
+              <ion-row>
+                <ion-col class="rsui-col">Products Premium:</ion-col>
+                <ion-col class="rsui-col rsui-data-col">${{productsPremium}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="rsui-col">Base Rate:</ion-col>
+                <ion-col class="rsui-col rsui-data-col">{{rateInfo?.rates?.productsUnmodifiedRate}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="rsui-col">Inc Limits Factor:</ion-col>
+                <ion-col class="rsui-col rsui-data-col">{{rateInfo?.rates?.productsIncreasedLimitsFactor}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="rsui-col">Final Rate:</ion-col>
+                <ion-col class="rsui-col rsui-data-col">{{rateInfo?.rates?.productsRate}}</ion-col>
+              </ion-row>
+          </ion-grid>
+          <ion-grid *ngIf="totalPremium && totalPremium != 0.00">
+              <ion-row>
+                <ion-col class="rsui-col">Total Premium:</ion-col>
+                <ion-col class="rsui-col rsui-data-col">${{totalPremium}}</ion-col>
+              </ion-row>
+          </ion-grid>
+  </ion-content>
+  
