@@ -1,0 +1,19 @@
+<ion-header>
+<ion-toolbar color="primary">
+    <ion-title>
+            <span> Class Code Lookup</span>
+    </ion-title>
+    <ion-buttons end>
+        <button id="closeBtn" ion-button (click)="closeModal()" color="white">Close</button>
+    </ion-buttons>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar (ionInput)="filterClasscodes($event)"></ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let classcode of classcodes" (click)="selected($event, classcode)">
+        {{ classcode.label }}
+        </ion-item>
+    </ion-list>
+</ion-content>

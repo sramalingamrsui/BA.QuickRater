@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { LoginPage } from '../pages/login/login';
 import { RatingPage } from '../pages/rating/rating';
+import { ClasscodeLookupPage } from '../pages/rating/classcodeLookup';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +19,8 @@ import { APIService } from '../providers/api-service';
   declarations: [
     MyApp,
     RatingPage,
-    LoginPage
+    LoginPage, 
+    ClasscodeLookupPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { APIService } from '../providers/api-service';
   entryComponents: [
     MyApp,
     RatingPage,
-    LoginPage
+    LoginPage,
+    ClasscodeLookupPage
   ],
   providers: [
     StatusBar,

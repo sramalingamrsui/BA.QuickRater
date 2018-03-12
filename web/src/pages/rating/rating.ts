@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import { LoadingController } from 'ionic-angular';
+import { LoadingController, ModalController } from 'ionic-angular';
 import 'rxjs/add/operator/debounceTime';
 
-import { Classcode } from '../../models/classcode';
 import { RateInfo } from '../../models/rating-response';
 
 import { RatingService } from '../../providers/rating-service';
+
+import { ClasscodeLookupPage} from './classcodeLookup';
 
 @Component({
   selector: 'page-rating',
   templateUrl: 'rating.html'
 })
 export class RatingPage {
-  classcodes: Classcode[]
   rateInfo: RateInfo;
   premisesPremium: number = 0;
   productsPremium: number = 0;
@@ -25,8 +25,11 @@ export class RatingPage {
   selectedClasscodeControl = new FormControl();
   selectedLocationControl = new FormControl();
   exposureControl = new FormControl();
+
+  locationError: boolean = false;
+  exposureError: boolean = false;
   
-  constructor(private ratingService: RatingService, public loadingCtrl: LoadingController) {
+  constructor(private ratingService: RatingService, public loadingCtrl: LoadingController, public modalCtrl: ModalController) {
   }
 
   ngOnInit() {
@@ -39,13 +42,36 @@ export class RatingPage {
       this.selectedLocationControl
       .valueChanges
       .debounceTime(1000)
-      .subscribe(newValue => {this.selectedLocation = newValue; this.calculate()});
+      .subscribe(newValue => {this.selectedLocation = newValue; this.onLocationChanged()});
 
       this.exposureControl
       .valueChanges
       .debounceTime(1000)
-      .subscribe(newValue => {this.exposure = newValue; this.calculate()});
+      .subscribe(newValue => {this.exposure = newValue; this.onExposureChanged()});
   }
+
+ onLocationChanged(): void{
+    var location = this.parseRawLocation(this.selectedLocation);
+
+    if(!location)
+    {
+      this.locationError = true
+      return;
+    }
+
+    this.calculate();
+ }
+
+ onExposureChanged(): void{
+  
+  if(this.exposure < 1)
+  {
+    this.exposureError = true;
+    return;
+  }
+
+  this.calculate();
+}
 
  calculate(): void {
   this.rateInfo = null;
@@ -112,5 +138,18 @@ export class RatingPage {
     }
 
     return location;
+  }
+
+  selectClasscode() {
+    let modal = this.modalCtrl.create(ClasscodeLookupPage, null);
+    
+    modal.onDidDismiss(data => {
+      if (data) {
+        this.selectedClasscode = data.classcode;
+        console.log(data.label);
+      }
+    });
+
+    modal.present();
   }
 }

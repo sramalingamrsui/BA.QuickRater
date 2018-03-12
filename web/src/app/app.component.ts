@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, LoadingController } from 'ionic-angular';
 
 import { LoginPage } from '../pages/login/login';
 import { RatingPage } from '../pages/rating/rating';
@@ -14,18 +14,25 @@ export class MyApp {
 
   constructor(
     public platform: Platform,
-    public authService: AuthService
+    public authService: AuthService,
+    public loadingCtrl: LoadingController 
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      this.authService.hasValidToken().then((response)=>{
-        this.nav.setRoot(RatingPage);
-      }).catch(e=>
-        this.nav.setRoot(LoginPage)
-      );
+    let loader = this.loadingCtrl.create({content: "Please wait..."});
+    
+    loader.present().then(() => {
+      this.platform.ready().then(() => {
+        this.authService.hasValidToken().then((response)=>{
+          loader.dismiss();
+          this.nav.setRoot(RatingPage);
+        }).catch(e=> {
+          loader.dismiss();
+          this.nav.setRoot(LoginPage)
+        });
+      });
     });
   }
 }

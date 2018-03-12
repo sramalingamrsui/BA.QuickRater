@@ -1,26 +1,32 @@
 <ion-header >
     <ion-toolbar color="primary">
-      <ion-title >
-        <div style="float:left;margin-right:10px;height:40px"><img alt="logo" height="40" src="../../assets/imgs/rsui-logo.png" /></div>
-          <div style="padding-top:10px"><span style="font-weight: normal" >Quick Rater</span></div>
+      <ion-title text-left>
+        <div style="float:left;margin-right:10px;height:40px"><img alt="logo" height="40" src="assets/imgs/rsui-logo.png" /></div>
+          <div style="padding-top:10px;text-align:center" ><span>Quick Rater</span></div>
           <div style="clear:both"></div>
           </ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
+  <ion-content style="background-color:#f5f5f5">
       <ion-list>
             <ion-item>
-              <ion-label class="rsui-label" stacked>Class Code</ion-label>
-              <ion-input type="number" [value]="selectedClasscode" clearInput [formControl]="selectedClasscodeControl"></ion-input>
+              <ion-label class="rsui-label" Fixed>Class Code</ion-label>
+              <ion-input type="text" (focus)="selectClasscode()" readonly [(ngModel)]="selectedClasscode" placeholder="Enter Class Code"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label class="rsui-label" stacked>Location</ion-label>
-                <ion-input type="text" [value]="selectedLocation" clearInput [formControl]="selectedLocationControl"></ion-input>
+                <ion-label class="rsui-label" Fixed>Location</ion-label>
+                <ion-input type="text" [value]="selectedLocation" clearInput [formControl]="selectedLocationControl" placeholder="Enter Zipcode or City, State"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="locationError">
+              <p style="color:red">Invalid Location. Please enter zipcode or city, state.</p>
             </ion-item>
             <ion-item>
-                <ion-label class="rsui-label" stacked>Exposure</ion-label>
-                <ion-input type="number" [value]="exposure" clearInput [formControl]="exposureControl"></ion-input>
-            </ion-item>    
+                <ion-label class="rsui-label" Fixed>Exposure</ion-label>
+                <ion-input type="number" min="0" [value]="exposure" clearInput [formControl]="exposureControl"placeholder="Enter Exposure"></ion-input>
+            </ion-item>   
+            <ion-item *ngIf="exposureError">
+              <p style="color:red">Enter exposure > 0.</p>
+            </ion-item> 
           </ion-list>
           <ion-grid *ngIf="rateInfo?.rates?.premisesUnmodifiedRate && rateInfo?.rates?.premisesUnmodifiedRate != 0.00">
               <ion-row>

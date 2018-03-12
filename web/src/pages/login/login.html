@@ -1,13 +1,22 @@
 
-<ion-content>
+<ion-header >
+        <ion-toolbar color="primary">
+          <ion-title text-left>
+            <div style="float:left;margin-right:10px;height:40px"><img alt="logo" height="40" src="assets/imgs/rsui-logo.png" /></div>
+              <div style="padding-top:10px;text-align:center" ><span>Quick Rater</span></div>
+              <div style="clear:both"></div>
+              </ion-title>
+        </ion-toolbar>
+      </ion-header>
+<ion-content style="background-color:#f5f5f5">
     <ion-list>
         <ion-item>
-            <ion-label class="rsui-label" stacked>Username</ion-label>
-            <ion-input type="text" [value]="username" [(ngModel)]="username" clearInput></ion-input>
+            <ion-label class="rsui-label" Fixed>Login ID</ion-label>
+            <ion-input type="text" [value]="username" [(ngModel)]="username" clearInput placeholder="Enter Login ID"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label class="rsui-label" stacked>Password</ion-label>
-            <ion-input type="password" [value]="password"  [(ngModel)]="password" clearInput></ion-input>
+            <ion-label class="rsui-label" Fixed>Password</ion-label>
+            <ion-input type="password" [value]="password"  [(ngModel)]="password" clearInput placeholder="Enter Password"></ion-input>
         </ion-item>
         <button ion-button (click)="login()" class="ml15 mt15">Log In</button>
         </ion-list>

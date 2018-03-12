@@ -8,12 +8,12 @@ import { APIService } from './api-service';
 
 @Injectable()
 export class RatingService {
-  ratingApiUrl = 'http://sramaling10/BAQuickRaterAPI';
+  ratingApiUrl = 'https://baratingstage.rsui.com/BAQuickRaterapi/';
   
   constructor(private apiService: APIService) { }
 
   loadClasscodes(): Observable<Classcode[]> {
-    return this.apiService.makeAPICall(`${this.ratingApiUrl}/Lookup/AllGLClassCodes`).map(res => <Classcode[]>res.json());
+    return this.apiService.makeAPICall(`${this.ratingApiUrl}/api/ClasscodeLookup`).map(res => <Classcode[]>res.json());
   } 
 
   getRates(city: string, state:string, zipcode:string, classcode:number): Observable<RatingResponse> {

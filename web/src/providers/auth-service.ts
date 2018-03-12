@@ -5,8 +5,8 @@ import { APIService } from './api-service';
 
 @Injectable()
 export class AuthService {
-  loginUrl: string = 'http://sramaling10/BAQuickRaterAPI/api/token';
-  validateUrl: string = 'http://sramaling10/BAQuickRaterAPI/api/validate';
+  loginUrl: string = 'https://baratingstage.rsui.com/BAQuickRaterapi/api/token';
+  validateUrl: string = 'https://baratingstage.rsui.com/BAQuickRaterapi/api/validate';
   
   constructor(public http: Http, private apiService: APIService) {  }
 
