@@ -29,11 +29,12 @@ export class ClasscodeLookupPage {
   }
 
   initializeItems() {
+    if(this.origClasscodes && this.origClasscodes.length > 0 ) return;
+
     let loader = this.loadingCtrl.create({content: "Please wait..."});
 
     loader.present().then(()=>{
       this.ratingService.loadClasscodes().subscribe(response => {
-          this.classcodes = response;
           this.origClasscodes = response;
           loader.dismiss();
       }, error => {
@@ -48,11 +49,13 @@ export class ClasscodeLookupPage {
     let val = ev.target.value;
 
     // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
+    if (val && val.length > 1) {
       this.classcodes = this.origClasscodes.filter((item) => {
         return (item.label.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+    else
+      this.classcodes = null;
   }
 
   selected(ev: any, classcode: Classcode) {

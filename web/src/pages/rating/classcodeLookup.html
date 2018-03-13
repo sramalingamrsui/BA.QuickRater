@@ -12,7 +12,7 @@
 <ion-content>
     <ion-searchbar (ionInput)="filterClasscodes($event)"></ion-searchbar>
     <ion-list>
-        <ion-item *ngFor="let classcode of classcodes" (click)="selected($event, classcode)">
+        <ion-item  class="classcode-item" *ngFor="let classcode of classcodes" (click)="selected($event, classcode)">
         {{ classcode.label }}
         </ion-item>
     </ion-list>
