@@ -75,6 +75,8 @@ export class RatingPage {
 
  calculate(): void {
   this.rateInfo = null;
+  this.exposureError = null;
+  this.locationError = null;
 
   if(!this.selectedClasscode || !this.selectedLocation) return;
 

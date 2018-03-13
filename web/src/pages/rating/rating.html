@@ -2,8 +2,8 @@
     <ion-toolbar color="primary">
       <ion-title text-left>
         <div style="float:left;margin-right:10px;height:40px"><img alt="logo" height="40" src="assets/imgs/rsui-logo.png" /></div>
-          <div style="padding-top:10px;text-align:center" ><span>Quick Rater</span></div>
-          <div style="clear:both"></div>
+        <div style="padding-top:5px;text-align:center" ><span style="font-size:28px">Quick Rater</span></div>
+        <div style="clear:both"></div>
           </ion-title>
     </ion-toolbar>
   </ion-header>
@@ -29,9 +29,9 @@
             </ion-item> 
           </ion-list>
           <ion-grid *ngIf="rateInfo?.rates?.premisesUnmodifiedRate && rateInfo?.rates?.premisesUnmodifiedRate != 0.00">
-              <ion-row>
+              <ion-row *ngIf="exposure">
                 <ion-col class="rsui-col">Premises Premium:</ion-col>
-                <ion-col class="rsui-col rsui-data-col">${{premisesPremium }}</ion-col>
+                <ion-col class="rsui-col rsui-data-col">{{premisesPremium | currency:'USD':'symbol':'1.0-0'}}</ion-col>
               </ion-row>
               <ion-row>
                 <ion-col class="rsui-col">Base Rate:</ion-col>
@@ -47,9 +47,9 @@
               </ion-row>
           </ion-grid>
           <ion-grid *ngIf="rateInfo?.rates?.productsUnmodifiedRate && rateInfo?.rates?.productsUnmodifiedRate != 0.00">
-              <ion-row>
+              <ion-row *ngIf="exposure">
                 <ion-col class="rsui-col">Products Premium:</ion-col>
-                <ion-col class="rsui-col rsui-data-col">${{productsPremium}}</ion-col>
+                <ion-col class="rsui-col rsui-data-col">{{productsPremium | currency:'USD':'symbol':'1.0-0'}}</ion-col>
               </ion-row>
               <ion-row>
                 <ion-col class="rsui-col">Base Rate:</ion-col>
@@ -67,7 +67,7 @@
           <ion-grid *ngIf="totalPremium && totalPremium != 0.00">
               <ion-row>
                 <ion-col class="rsui-col">Total Premium:</ion-col>
-                <ion-col class="rsui-col rsui-data-col">${{totalPremium}}</ion-col>
+                <ion-col class="rsui-col rsui-data-col">{{totalPremium | currency:'USD':'symbol':'1.0-0'}}</ion-col>
               </ion-row>
           </ion-grid>
   </ion-content>
